@@ -1,0 +1,23 @@
+html,
+body,
+#root{
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  height: 100%
+}
+.aside{
+  width: 260px;
+  height: 100%;
+  overflow: scroll;
+}
+.main{
+  flex :1;
+}
+
+.active{
+  background-color: black;
+  color: white;
+}
