@@ -24,21 +24,42 @@ const getLatLng = (str) => {
   return coord;
 }
 
-const mapStateToProps = (state) => ({center: getLatLng(state.coordinate)})
+const mapStateToProps = (state) => {
+  const prop = {
+    center: getLatLng(state.coordinate),
+  }
+  if(state.zoom) prop.zoom = state.zoom
+  return prop;
+}
+const delayfunc = (func) => {
+  let i = null
+  return function(){
+    if(i) clearTimeout(i);
+    i = setTimeout(func, 500);
+  }
+}
 const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 class MapWrapper extends Component {
   constructor(props) {
     super(props);
-    this.states = {};
+    this.state = {};
   }
   componentWillReceiveProps (nextProps){
     if(nextProps.center){
       this.mapInstance.panTo(nextProps.center);
     }
+    if(nextProps.zoom){
+      console.log(nextProps.zoom)
+      delayfunc(() => {
+        this.setState({
+          zoom: nextProps.zoom
+        })
+      })();
+    }
   }
 
   renderRoutes() {
-    return this.states.directions.map((dir) => <DirectionsRenderer directions={dir} />)
+    return this.state.directions.map((dir) => <DirectionsRenderer directions={dir} />)
   }
 
   renderMarkers = () =>
@@ -53,6 +74,7 @@ class MapWrapper extends Component {
     return <GoogleMap
       defaultZoom={9}
       defaultCenter={{ lat: 35.6693863, lng: 139.6012946 }}
+      zoom={this.state.zoom || 9}
       ref={(map) => {this.mapInstance = map}}
     >
       {this.props.isMarkerShown && <Marker position={this.props.center || { lat: 35.6693863, lng: 139.6012946 }} />}

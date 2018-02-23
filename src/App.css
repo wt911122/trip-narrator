@@ -2,6 +2,8 @@ html,
 body,
 #root{
   height: 100%;
+  font-size: 12px;
+  font-weight: bolder;
 }
 
 .App {
@@ -19,8 +21,22 @@ body,
 
 .active{
   background-color: black;
-  color: white;
+  color: #83d0f2;
 }
+.agenda section {
+  border: 1px solid rgba(0,0,0,0.5);
+  border-radius: 5px;
+  margin: 10px 15px;
+  padding: 8px 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+.agenda h1{
+  font-size: 1.2em;
+}
+.agenda p{
+  font-size: 1em;
+}
+
 @media only screen
 and (min-device-width : 370px)
 and (max-device-width : 680px)
