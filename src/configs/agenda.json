@@ -1,61 +1,31 @@
 [
   {
     "title": "day1",
-    "content": "somewhere",
-    "datetime": "2018.4.21 13:00pm",
+    "content": "大阪",
+    "datetime": "2018-04-21 13:00:00",
     "coordinate": "34.6784656,135.4601304"
   },
   {
     "title": "day2",
-    "content": "somewhere",
-    "datetime": "2018.4.22 13:00pm",
+    "content": "京都",
+    "datetime": "2018-04-22 13:00:00",
     "coordinate": "35.0062205,135.6909095"
   },
   {
     "title": "day3",
     "content": "somewhere",
-    "datetime": "2018.4.23 13:00pm",
+    "datetime": "2018-04-23 13:00:00",
     "coordinate": "35.1681151,136.8765804"
   },
   {
     "title": "day4",
-    "datetime": "2018.4.24 13:00pm",
+    "datetime": "2018-04-24 13:00:00",
     "content": "somewhere",
     "coordinate": "35.239983,139.0040275"
   },
   {
     "title": "day5",
-    "datetime": "2018.4.25 13:00pm",
-    "content": "somewhere",
-    "coordinate": "35.6693863,139.6012946"
-  },
-  {
-    "title": "day1",
-    "content": "somewhere",
-    "datetime": "2018.4.21 13:00pm",
-    "coordinate": "34.6784656,135.4601304"
-  },
-  {
-    "title": "day2",
-    "content": "somewhere",
-    "datetime": "2018.4.22 13:00pm",
-    "coordinate": "35.0062205,135.6909095"
-  },
-  {
-    "title": "day3",
-    "content": "somewhere",
-    "datetime": "2018.4.23 13:00pm",
-    "coordinate": "35.1681151,136.8765804"
-  },
-  {
-    "title": "day4",
-    "datetime": "2018.4.24 13:00pm",
-    "content": "somewhere",
-    "coordinate": "35.239983,139.0040275"
-  },
-  {
-    "title": "day5",
-    "datetime": "2018.4.25 13:00pm",
+    "datetime": "2018-04-25 13:00:00",
     "content": "somewhere",
     "coordinate": "35.6693863,139.6012946"
   }

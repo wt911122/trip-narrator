@@ -12,7 +12,7 @@ class App extends Component {
           <Agenda agendaplan={plan}/>
         </div>
         <div className="main">
-          <TripMapComponent />
+          <TripMapComponent agendaplan={plan}/>
         </div>
       </div>
     );
