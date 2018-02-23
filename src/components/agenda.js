@@ -7,7 +7,7 @@ import { moveOnTogo } from '../actions/index'
 
 
 const Agenda = ({agendaplan, onTogoClick, center}) =>
-  <div>
+  <div className="agenda">
     {agendaplan.map((plan) =>
       <Setting key={uniqueId('agenda_')} {...plan} active={plan.coordinate === center} onClick={() => onTogoClick(plan)}/>)}
   </div>
