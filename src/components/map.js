@@ -9,8 +9,9 @@ import {
   Marker,
   DirectionsRenderer,
   Polyline,
+  InfoWindow
 } from "react-google-maps"
-
+import Setting from './setting'
 // const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
 let DirectionsService = null
 
@@ -28,7 +29,8 @@ const getLatLng = (str) => {
 const mapStateToProps = (state) => {
   const prop = {
     center: getLatLng(state.coordinate),
-    time: new Date(state.datetime)
+    time: new Date(state.datetime),
+    which: state.datetime
   }
   if(state.zoom) prop.zoom = state.zoom
   return prop;
@@ -79,13 +81,19 @@ class MapWrapper extends Component {
     return this.state.directions.map((dir) => <DirectionsRenderer directions={dir} />)
   }
 
+  renderinfoWindow = (setting) => (
+    <InfoWindow>
+      <Setting {...setting} />
+    </InfoWindow>)
+
   renderMarkers = () =>
     (this.props.agendaplan.map(setting =>
       <Marker
         key={uniqueId("markers_")}
         icon={image}
-        position={ getLatLng(setting.coordinate) }
-      />))
+        position={ getLatLng(setting.coordinate) }>
+        {this.props.which === setting.datetime && this.renderinfoWindow(setting)}
+      </Marker>))
 
   render() {
     return <GoogleMap
