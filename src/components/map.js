@@ -12,6 +12,7 @@ import {
 } from "react-google-maps"
 
 // const { MarkerClusterer } = require("react-google-maps/lib/components/addons/MarkerClusterer");
+let DirectionsService = null
 
 const getLatLng = (str) => {
   const coord = { lat: 35.6693863, lng: 139.6012946 };
@@ -27,6 +28,7 @@ const getLatLng = (str) => {
 const mapStateToProps = (state) => {
   const prop = {
     center: getLatLng(state.coordinate),
+    time: new Date(state.datetime)
   }
   if(state.zoom) prop.zoom = state.zoom
   return prop;
@@ -46,7 +48,22 @@ class MapWrapper extends Component {
   }
   componentWillReceiveProps (nextProps){
     if(nextProps.center){
+      console.log(this.props.time)
       this.mapInstance.panTo(nextProps.center);
+      if(this.props.center){
+        route(DirectionsService, this.props.center, this.props.time, nextProps.center)
+          .then(result => {
+            this.setState({
+              routeGoogle: result
+            })
+          })
+          .catch((err) => {
+            this.setState({
+              routeGoogle: null
+            })
+          })
+      }
+
     }
     if(nextProps.zoom){
       console.log(nextProps.zoom)
@@ -81,7 +98,12 @@ class MapWrapper extends Component {
       { this.renderMarkers() }
       <Polyline
         options={{
-          path: this.props.agendaplan.map((setting) => (getLatLng(setting.coordinate))),
+          path: this.props.agendaplan.map((setting) => {
+            if(setting.main)
+              return getLatLng(setting.coordinate)
+            else
+              return null
+          }).filter(Boolean),
           icons: [{
              /* eslint-disable no-undef */
             icon: {path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW},
@@ -90,20 +112,32 @@ class MapWrapper extends Component {
           }]
         }}
       />
+      {this.state.routeGoogle && <DirectionsRenderer
+        directions={this.state.routeGoogle}
+        defaultOptions={{
+          polylineOptions: {
+            strokeColor: "#144099"
+          }
+        }}
+      />}
     </GoogleMap>
   }
 
 }
 
-const route = (DirectionsService, start, end) => {
+
+const route = (DirectionsService, start, startTime, end) => {
   return new Promise((resolve, reject) => {
-    DirectionsService.route({
+    const _request = {
       /* eslint-disable no-undef */
       origin: new google.maps.LatLng(start.lat, start.lng),
       destination: new google.maps.LatLng(end.lat, end.lng),/* eslint-disable no-undef */
       travelMode: google.maps.TravelMode.DRIVING,/* eslint-disable no-undef */
-    }, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {/* eslint-disable no-undef */
+    }
+    DirectionsService.route(_request, (result, status) => {
+      /* eslint-disable no-undef */
+      if (status === google.maps.DirectionsStatus.OK) {
+        console.log(result);
         resolve(result);
       } else {
         console.log(result);
@@ -136,7 +170,7 @@ const formatRoutes = (agenda) => {
 const TripMapComponent = compose(
   withProps({
     isMarkerShown: true,
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCYVhBbCCKhDwOmX8c8psVRuuRyvL03M5Y&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDpO3lH-mAj6xjGsqCpFWx21eOg5Fx4XIY&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -146,6 +180,7 @@ const TripMapComponent = compose(
   connect(mapStateToProps),
   lifecycle({
     componentDidMount() {
+      DirectionsService = new google.maps.DirectionsService();
       /*formatRoutes(this.props.agendaplan)
         .then((dirs) => {
           this.setState({

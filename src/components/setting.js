@@ -10,7 +10,7 @@ const Setting = ({
   url
 }) =>
   <section onClick={onClick} className={active? 'active': ''}>
-      <h1>{title}{price && (<span>{price}</span>)}{url && (<a href="url">link</a>)}</h1>
+      <h1>{title}{price && (<span>{price}</span>)}{url && (<a href={url}>link</a>)}</h1>
       <p>{datetime}</p>
       <p>{content}</p>
   </section>
