@@ -27,10 +27,11 @@ const getLatLng = (str) => {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   const prop = {
     center: getLatLng(state.coordinate),
     time: new Date(state.datetime),
-    which: state.datetime
+    which: state.index
   }
   if(state.zoom) prop.zoom = state.zoom
   return prop;
@@ -50,10 +51,11 @@ class MapWrapper extends Component {
   }
   componentWillReceiveProps (nextProps){
     if(nextProps.center){
-      console.log(this.props.time)
+      console.log(nextProps.which)
       this.mapInstance.panTo(nextProps.center);
-      if(this.props.center){
-        route(DirectionsService, this.props.center, this.props.time, nextProps.center)
+      let lastIndex = nextProps.which - 1;
+      if(lastIndex >= 0 &&  this.props.center){
+        route(DirectionsService, getLatLng(this.props.agendaplan[lastIndex].coordinate), this.props.time, nextProps.center)
           .then(result => {
             this.setState({
               routeGoogle: result
@@ -87,12 +89,12 @@ class MapWrapper extends Component {
     </InfoWindow>)
 
   renderMarkers = () =>
-    (this.props.agendaplan.map(setting =>
+    (this.props.agendaplan.map((setting, index) =>
       <Marker
         key={uniqueId("markers_")}
         icon={image}
         position={ getLatLng(setting.coordinate) }>
-        {this.props.which === setting.datetime && this.renderinfoWindow(setting)}
+        {this.props.which === index && this.renderinfoWindow(setting)}
       </Marker>))
 
   render() {

@@ -1,6 +1,7 @@
-export const moveOnTogo = togo => {
+export const moveOnTogo = (togo, index) => {
   return {
     type: 'MOVE_ON',
-    togo
+    togo,
+    index: index
   }
 }

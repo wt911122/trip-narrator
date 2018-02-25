@@ -8,16 +8,16 @@ import { moveOnTogo } from '../actions/index'
 
 const Agenda = ({agendaplan, onTogoClick, center}) =>
   <div className="agenda">
-    {agendaplan.map((plan) =>
-      <Setting key={uniqueId('agenda_')} {...plan} active={plan.coordinate === center} onClick={() => onTogoClick(plan)}/>)}
+    {agendaplan.map((plan, index) =>
+      <Setting key={uniqueId('agenda_')} {...plan} active={plan.coordinate === center} onClick={() => onTogoClick(plan, index)}/>)}
   </div>
 
 const mapStateToProps = (state) =>  ({center: state.coordinate})
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTogoClick: togo => {
-      dispatch(moveOnTogo(togo))
+    onTogoClick: (togo, index) => {
+      dispatch(moveOnTogo(togo, index))
     }
   }
 }
