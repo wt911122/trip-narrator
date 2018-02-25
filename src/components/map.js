@@ -119,7 +119,8 @@ class MapWrapper extends Component {
             icon: {path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW},
             offset: '50%',
             repeat: '100px'
-          }]
+          }],
+          strokeColor: "#DB9019"
         }}
       />
       {this.state.routeGoogle && <DirectionsRenderer

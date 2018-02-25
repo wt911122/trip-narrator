@@ -20,8 +20,13 @@ body,
 }
 
 .active{
-  background-color: black;
-  color: #83d0f2;
+  background-color: #83d0f2;
+  color: black;
+}
+.agenda .datetime{
+  padding: 6px;
+  background-color: #83d0f2;
+  text-align: center;
 }
 .agenda section {
   border: 1px solid rgba(0,0,0,0.5);
