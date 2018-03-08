@@ -66,10 +66,13 @@ and (orientation : portrait) {
     overflow-x: scroll;
   }
   .aside >.agenda > .datetime{
+    font-size: 12px;
     display: inline-block;
-    margin-left: -99px;
-    transform: rotate(90deg) translateX(-70px) translateY(-128px);
+    vertical-align: top;
+    width: 150px;
     transform-origin: top left;
+    transform: rotate(90deg) translateX(-12px) translateY(-27px);
+    margin-right: -136px;
   }
   .aside > .agenda{
     white-space:nowrap;
