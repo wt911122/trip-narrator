@@ -33,6 +33,7 @@ const mapStateToProps = (state) =>  ({center: state.coordinate})
 const mapDispatchToProps = dispatch => {
   return {
     onTogoClick: (togo, index) => {
+      console.log(togo, index)
       dispatch(moveOnTogo(togo, index))
     }
   }

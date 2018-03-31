@@ -7,90 +7,139 @@
     "main": "1"
   },
   {
-    "title": "关西国际机场",
+    "title": "东京成田机场",
     "content": "到达",
-    "datetime": "2018-04-20 16:00",
-    "coordinate": "34.4338585,135.2285506",
+    "datetime": "2018-04-20 13:50",
+    "coordinate": "35.771839, 140.392917",
     "main": "1"
   },
   {
-    "title": "乘坐JR",
-    "content": "上车",
-    "datetime": "2018-04-20 17:30",
-    "coordinate": "34.436395, 135.243192"
+    "title": "机场第二航站楼",
+    "content": "坐车去秋叶原",
+    "datetime": "2018-04-20 13:50",
+    "coordinate": "35.773379, 140.387152"
   },
   {
-    "title": "到达大阪",
-    "datetime": "2018-04-20 19:00",
+    "title": "东京 秋叶原",
+    "datetime": "2018-04-20 14:50",
     "content": "下车",
-    "coordinate": "34.7024898,135.4937619",
+    "coordinate": "35.698391, 139.773125",
     "main": "1"
   },
   {
-    "title": "入住",
-    "datetime": "2018-04-20 19:30",
-    "content": "新!!大阪(梅田)的一个热门房间!免费 WiFi!!",
-    "coordinate": "34.702622, 135.498816",
-    "price": "￥896",
-    "url": "https://zh.airbnb.com/rooms/13757074?location=%E5%A4%A7%E9%98%AA%20Osaka%20Station&children=0&infants=0&adults=3&guests=3&check_in=2018-04-20&check_out=2018-04-21&s=YMO3YGAs"
+    "title": "JINS眼镜店",
+    "datetime": "2018-04-20 14:55",
+    "content": "配眼镜",
+    "coordinate": "35.698345, 139.772239"
   },
   {
-    "title": "吃饭",
+    "title": "入住",
+    "datetime": "2018-04-20 15:30",
+    "content": "JR Akihabara Station 3 min.!! Very nice location!!",
+    "coordinate": "35.698351, 139.770032",
+    "url": "https://zh.airbnb.com/rooms/13399982"
+  },
+  {
+    "title": "秋叶原吃饭，顺便可以参观下交通博物馆",
+    "datetime": "2018-04-20 16:10",
+    "content": "むぎとオリーブ 鸡肉荞麦面！",
+    "coordinate": "35.697234, 139.770265"
+  },
+  {
+    "title": "秋叶原站-山手线",
+    "datetime": "2018-04-20 17:00",
+    "content": "出发去东京铁塔看夜景",
+    "coordinate": "35.698391, 139.773125"
+  },
+  {
+    "title": "滨松町-山手线",
+    "datetime": "2018-04-20 17:15",
+    "content": "下车步行",
+    "coordinate": "35.655047, 139.757122"
+  },
+  {
+    "title": "东京铁塔",
+    "datetime": "2018-04-20 17:30",
+    "content": "步行至东京铁塔",
+    "coordinate": "35.658602, 139.745461"
+  },
+  {
+    "title": "有时间的话可以去 六本木hills",
     "datetime": "2018-04-20 20:30",
-    "content": "梅田附近吃饭，逛一逛",
-    "coordinate": "34.7010574,135.4963359"
+    "content": "步行至六本木",
+    "coordinate": "35.660682, 139.729263"
   },
   {
-    "title": "乘坐JR",
-    "datetime": "2018-04-21 08:00",
-    "content": "去京都",
-    "coordinate": "34.7024898,135.4937619"
-  },
-  {
-    "title": "到达京都",
-    "datetime": "2018-04-21 09:20",
-    "content": "到达京都站",
-    "coordinate": "34.9874616,135.7578793",
-    "tip": "豆腐料理，宇治抹茶 ",
-    "main": "1"
-  },
-  {
-    "title": "入住",
-    "datetime": "2018-04-21 09:30",
-    "content": "京阪七条駅より徒歩1分 ワンフロア貸切の宿 Shra Inn",
-    "coordinate": "34.988727,135.7686053",
-    "price": "￥792",
-    "url": "https://zh.airbnb.com/rooms/18335177?location=%E6%97%A5%E6%9C%AC%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E6%9D%B1%E5%B1%B1%E5%8C%BA&children=0&infants=0&adults=3&guests=3&check_in=2018-04-21&check_out=2018-04-22&s=c28vq08C"
-  },
-  {
-    "title": "清水寺",
-    "datetime": "2018-04-21 10:00",
-    "content": "开始步行",
-    "coordinate": "34.9948605,135.7828576"
-  },
-  {
-    "title": "慈照寺/银阁寺",
-    "datetime": "2018-04-21 16:00",
-    "content": "结束步行",
-    "coordinate": "35.0271333,135.798179"
-  },
-  {
-    "title": "随便逛逛回去歇着或者去找豆腐料理~",
-    "datetime": "2018-04-21 17:00",
+    "title": "乘日比谷线 到秋叶原 步行回酒店",
+    "datetime": "2018-04-20 22:30",
     "content": "回去歇着",
-    "coordinate": "34.988727,135.7686053"
+    "coordinate": "35.698351, 139.770032"
   },
   {
-    "title": "伏见稻荷大社",
-    "datetime": "2018-04-22 8:00",
-    "content": "千本鸟居！",
-    "coordinate": "34.9671446,135.770483"
+    "title": "秋叶原站",
+    "datetime": "2018-04-21 08:30",
+    "content": "然后搭乘 各停津田沼 去江户东京博物馆",
+    "coordinate": "35.698391, 139.773125"
   },
   {
-    "title": "出发去名古屋",
-    "datetime": "2018-04-22 12:00",
-    "content": "鳗鱼饭我来啦！",
-    "coordinate": "34.9874616,135.7578793"
+    "title": "江户东京博物馆",
+    "datetime": "2018-04-21 08:50",
+    "content": "参观博物馆",
+    "coordinate": "35.696690, 139.795753"
+  },
+  {
+    "title": "回到秋叶原退房",
+    "datetime": "2018-04-21 10:30",
+    "content": "退房拿行李",
+    "coordinate": "35.698351, 139.770032"
+  },
+  {
+    "title": "去参观银座 山手线",
+    "datetime": "2018-04-21 11:00",
+    "content": "行李寄存在东京站",
+    "coordinate": "35.698391, 139.773125"
+  },
+  {
+    "title": "东京站",
+    "datetime": "2018-04-21 11:30",
+    "content": "行李寄存在东京站",
+    "coordinate": "35.681287, 139.767334"
+  },
+  {
+    "title": "银座",
+    "datetime": "2018-04-21 11:30",
+    "content": "行李寄存在东京站",
+    "coordinate": "35.670892, 139.764889"
+  },
+  {
+    "title": "出发去箱根",
+    "datetime": "2018-04-21 13:30",
+    "content": "拿上行李",
+    "coordinate": "35.681287, 139.767334"
+  },
+  {
+    "title": "小田原站下车",
+    "datetime": "2018-04-21 14:30",
+    "content": "转车",
+    "coordinate": "35.256568, 139.154851"
+  },
+  {
+    "title": "强罗馆温泉酒店",
+    "datetime": "2018-04-21 15:30",
+    "content": "入住酒店歇着吃吃喝喝早睡早起",
+    "coordinate": "35.250867, 139.047220"
+  },
+  {
+    "title": "出发去名古屋吃中饭",
+    "datetime": "2018-04-22 08:30",
+    "content": "起床出发",
+    "coordinate": "35.250867, 139.047220"
+  },
+  {
+    "title": "小田原站上车",
+    "datetime": "2018-04-22 09:30",
+    "content": "乘坐JR",
+    "coordinate": "35.256568, 139.154851"
   },
   {
     "title": "到达名古屋 Nagoya Station",
@@ -101,60 +150,22 @@
   },
   {
     "title": "鰻魚老店 蓬莱軒 松坂屋店",
-    "datetime": "2018-04-22 12:30",
+    "datetime": "2018-04-22 12:50",
     "content": "蓬莱轩本店还是近一点的松坂屋店？",
     "coordinate": "35.1628219,136.9001167"
   },
   {
-    "title": "出发去箱根",
-    "datetime": "2018-04-22 14:30",
-    "content": "温泉！温泉！温泉！",
+    "title": "出发去京都",
+    "datetime": "2018-04-22 13:30",
+    "content": "去京都",
     "coordinate": "35.1707069,136.88007"
   },
-  {
-    "title": "到达小田原",
+   {
+    "title": "到达京都",
     "datetime": "2018-04-22 14:30",
-    "content": "温泉！温泉！温泉！",
-    "coordinate": "35.2560805,139.1535976",
+    "content": "到达京都站",
+    "coordinate": "34.9874616,135.7578793",
+    "tip": "豆腐料理，宇治抹茶 ",
     "main": "1"
-  },
-  {
-    "title": "游心亭旅馆",
-    "datetime": "2018-04-22 15:30",
-    "content": "温泉！温泉！温泉！",
-    "coordinate": "35.2272191,139.0901142"
-  },
-  {
-    "title": "出发去东京",
-    "datetime": "2018-04-23 08:30",
-    "content": "温泉！温泉！温泉！",
-    "coordinate": "35.2560805,139.1535976"
-  },
-  {
-    "title": "品川地铁站换乘",
-    "datetime": "2018-04-23 09:30",
-    "content": "换乘",
-    "coordinate": "35.6284713,139.7365657"
-  },
-  {
-    "title": "品川地铁站换乘山手线",
-    "datetime": "2018-04-23 09:40",
-    "content": "换乘",
-    "coordinate": "35.628171, 139.738091",
-    "main": "1"
-  },
-  {
-    "title": "到达秋叶原",
-    "datetime": "2018-04-23 10:00",
-    "content": "换乘",
-    "coordinate": "35.6983378,139.7724778",
-    "main": "1"
-  },
-  {
-    "title": "秋叶原华盛顿酒店",
-    "datetime": "2018-04-23 10:30",
-    "content": "入住",
-    "coordinate": "35.6973891,139.7732468"
   }
-  
 ]
