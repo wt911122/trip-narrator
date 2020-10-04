@@ -1,11 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view v-if="data"></router-view>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
-
+    computed: mapState({
+        data: state => state.data,
+    }),
+    created(){
+        console.log('getData')
+        this.$store.dispatch('getData');
+    }
 }
 </script>
 <style>

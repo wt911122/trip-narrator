@@ -1,6 +1,6 @@
 <template>
 <div :class="$style.map">
-    <div :class="$style.map" id="mapContainer"></div> 
+    <div :class="$style.map" id="mapContainer"></div>
     <!-- <div :class="$style.searchBlock">
         <div>
             <input :class="$style.input" :value="address" @change="address = $event.target.value"/>
@@ -15,8 +15,18 @@
 </template>
 
 <script>
-import macaoLocations from '../addresses/macao.json';
+// import macaoLocations from '../addresses/macao.json';
 import { mapState } from 'vuex';
+
+const options = {
+  year: 'numeric', month: 'numeric', day: 'numeric',
+  hour: 'numeric', minute: 'numeric', second: 'numeric',
+  hour12: false
+};
+const formatter = new Intl.DateTimeFormat('zh-Hans-CN', {
+    timeZone: "Asia/Shanghai",
+    ...options
+});
 const icons = {
     hotel: require('../assets/icons/hotel.png'),
     meal: require('../assets/icons/meal.png'),
@@ -35,7 +45,8 @@ export default {
         }
     },
     computed: mapState({
-        currloc: state => state.currLocation
+        currloc: state => state.currLocation,
+        locations: state => state.data,
     }),
     watch: {
         currloc(val){
@@ -43,49 +54,109 @@ export default {
             marker.emit('click', {
                 target: marker
             })
+        },
+        locations(){
+            this.map.clearMap();
+            this.generateMarker();
         }
     },
     mounted(){
-        console.log(macaoLocations)
         const {
             center, zoom, locations, city
-        } = macaoLocations;
+        } = this.locations;
         const map = this.map = new AMap.Map('mapContainer', {
             center,
             zoom
-        }); 
+        });
         this.geocoder = new AMap.Geocoder({
             city, //城市设为北京，默认：“全国”
         });
-        this.markers = locations.map((loc) => {
-            const marker = new AMap.Marker({
-                map,
-                position: loc.location,
-                icon: new AMap.Icon({
-                    size: new AMap.Size(36, 36),
-                    image: icons[loc.type],
-                    imageSize:  new AMap.Size(24, 24),
-                }),
-            });
-            marker.address = loc.address;
-            marker.content = loc.content;
-            marker.on('click', this.markerClick);
-            marker.on('touchend', this.markerClick);
-            return marker;
-        })
+        this.generateMarker();
         this.infoWindow = new AMap.InfoWindow({
             autoMove: true,
             offset: {x: 0, y: -30}
         });
+
     },
     methods: {
+        generateMarker(){
+            let path = [];
+            this.markers = this.locations.locations.map((loc, idx) => {
+                if(loc.checkin) {
+                    new AMap.Marker({
+                        map: this.map,
+                        position: loc.location,
+                        offset: new AMap.Pixel(-20, -20),
+                        content: `${idx}`,
+                    });
+                }
+                const marker = new AMap.Marker({
+                    map: this.map,
+                    position: loc.location,
+                    icon: new AMap.Icon({
+                        size: new AMap.Size(36, 36),
+                        image: icons[loc.type],
+                        imageSize:  new AMap.Size(24, 24),
+                    }),
+                });
+                if(loc.checkin) {
+                    path.push(loc.location);
+                }
+                marker.loc = loc;
+                marker.address = loc.address;
+                marker.content = this.generateBlock(loc);
+                marker.on('click', this.markerClick);
+                marker.on('touchend', this.markerClick);
+                return marker;
+            });
+            if(path.length){
+                // console.log(path)
+                // console.log(path.map((p => new AMap.LngLat(p[0], p[1]))));
+                const polyline = new AMap.Polyline({
+                    path,
+                    borderWeight: 1, // 线条宽度，默认为 1
+                    strokeColor: 'red', // 线条颜色
+                    lineJoin: 'round', // 折线拐点连接处样式
+                    strokeStyle: 'dashed',
+                });
+                this.map.add(polyline);
+            }
+        },
+        generateBlock(loc) {
+            const div = document.createElement('div');
+            let divbody = `<div>${loc.content}</div>`;
+            if(loc.checkin){
+                
+                divbody += `<div>${formatter.format(loc.checkin)}</div>`
+            }
+            div.innerHTML = divbody;
+            const button = document.createElement('button');
+            button.innerText = '打卡'
+            button.addEventListener('click', async (e) => {
+                const response = await fetch('/action/checkin', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        location: loc,
+                        time: Date.now()
+                    })
+                });
+                const res = await response.json();
+                this.$store.dispatch('getData');
+            });
+            div.appendChild(button);
+            return div;
+        },
+
         searchAddress() {
             const {
                 map, address
             } = this;
             AMap.service(["AMap.PlaceSearch"], function() {
                 //构造地点查询类
-                var placeSearch = new AMap.PlaceSearch({ 
+                var placeSearch = new AMap.PlaceSearch({
                     pageSize: 5, // 单页显示结果条数
                     pageIndex: 1, // 页码
                     city: "澳门", // 兴趣点城市
@@ -115,11 +186,10 @@ export default {
             });
         },
         markerClick(e) {
-            console.log(e);
             const { infoWindow, map } = this;
             infoWindow.setContent(e.target.content);
             infoWindow.open(map, e.target.getPosition());
-            
+            this.$store.commit('SET_CUR_LOC', e.target.loc);
         }
 
     }
@@ -130,15 +200,15 @@ export default {
 .map {
     position: relative;
     width: 100%;
-    height: 100%; 
+    height: 100%;
 }
 .overlayer{
     position: absolute;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     left: 0;
     top: 0;
-   
+
 }
 .searchBlock{
     position: absolute;

@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.sidebar">
-        <div v-for="loc in locations" :class="$style.block" :style="getStyle(loc)" @click="setCurLoc(loc)">
+        <div v-for="(loc, index) in locations" :id="loc.address" :class="$style.block" :style="getStyle(loc)" @click="setCurLoc(loc)">
             <p style="font-size: 1.2em;font-weight:bold;">{{loc.address}}</p>
             <p>{{loc.content}}</p>
         </div>
@@ -16,17 +16,25 @@ const colors = {
     spot: '#d81e06',
 }
 export default {
-    data() {
-        const {
-            locations
-        } = macaoLocations;
-        return {
-            locations
+    // data() {
+    //     const {
+    //         locations
+    //     } = macaoLocations;
+    //     return {
+    //         locations
+    //     }
+    // },
+    computed: mapState({
+        currloc: state => state.currLocation,
+        locations: state => state.data.locations,
+    }),
+    watch: {
+        currloc(val) {
+            if(val){
+                document.getElementById(val.address).scrollIntoView()
+            }
         }
     },
-    computed: mapState({
-        currloc: state => state.currLocation
-    }),
     methods: {
         setCurLoc(loc){
             this.$store.commit('SET_CUR_LOC', loc)
