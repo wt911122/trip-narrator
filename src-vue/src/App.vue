@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view v-if="data"></router-view>
+      <main class="main">
+        <router-view v-if="data"></router-view>
+      </main>
+    <footer class="footer">
+        <a href="http://beian.miit.gov.cn" target="_blank">浙ICP备2020037195号</a>
+    </footer>
   </div>
 </template>
 <script>
@@ -22,6 +27,12 @@ body {
     width: 100vw;
     height: 100vh;
 }
+.footer{
+    background: #fff;
+    font-size: 12px;
+    text-align: center;
+    height: 1.5em;
+}
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -30,8 +41,15 @@ body {
     color: #2c3e50;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+.main{
+    width: 100%;
+    height: calc(100vh - 1.5em);
+    flex: 1;
+}
 #nav {
   padding: 30px;
 }

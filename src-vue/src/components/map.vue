@@ -151,23 +151,23 @@ export default {
                 divbody += `<div>${formatter.format(loc.checkin)}</div>`
             }
             div.innerHTML = divbody;
-            const button = document.createElement('button');
-            button.innerText = '打卡'
-            button.addEventListener('click', async (e) => {
-                const response = await fetch('/action/checkin', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        location: loc,
-                        time: Date.now()
-                    })
-                });
-                const res = await response.json();
-                this.$store.dispatch('getData');
-            });
-            div.appendChild(button);
+            // const button = document.createElement('button');
+            // button.innerText = '打卡'
+            // button.addEventListener('click', async (e) => {
+            //     const response = await fetch('/action/checkin', {
+            //         method: "POST",
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify({
+            //             location: loc,
+            //             time: Date.now()
+            //         })
+            //     });
+            //     const res = await response.json();
+            //     this.$store.dispatch('getData');
+            // });
+            // div.appendChild(button);
             return div;
         },
 
@@ -210,7 +210,7 @@ export default {
             const { infoWindow, map } = this;
             infoWindow.setContent(e.target.content);
             infoWindow.open(map, e.target.getPosition());
-            this.$store.commit('SET_CUR_LOC', e.target.loc);
+            // this.$store.commit('SET_CUR_LOC', e.target.loc);
         }
 
     }
